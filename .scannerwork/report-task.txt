@@ -1,0 +1,6 @@
+projectKey=sonarqube_bugs
+serverUrl=http://localhost:9000
+serverVersion=10.7.0.96327
+dashboardUrl=http://localhost:9000/dashboard?id=sonarqube_bugs
+ceTaskId=a3690758-47e0-4ab7-8d1c-292cb04722a3
+ceTaskUrl=http://localhost:9000/api/ce/task?id=a3690758-47e0-4ab7-8d1c-292cb04722a3
