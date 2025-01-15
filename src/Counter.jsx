@@ -1,4 +1,5 @@
 import React from 'react';
+import ErrorBoundary from './ErrorBoundary';
 
 class Counter extends React.Component {
 
@@ -33,24 +34,34 @@ class Counter extends React.Component {
         return (
             <div className='Container border border-dark text-center'>
                 <h1 className='text-center'>Counter</h1>
-                <p><strong>{this.state.counter}</strong></p>
-                <div>
-                    <button onClick={this.Increment} className='btn btn-outline-success m-2'>
-                        Increment
-                    </button>
-                    <button onClick={this.Restart} className='btn btn-outline-success m-2'>
-                        Restart
-                    </button>
-                    <button onClick={this.Decrement} className='btn btn-outline-success m-2'>
-                        Decrement
-                    </button>
-                </div>
+                {
+                    if(this.state.counter == 5) {
+                        <ErrorBoundary/>
+                    }
+                    else{
+                        <div>
+                            <p><strong>{this.state.counter}</strong></p>
+                            <div>
+                                <button onClick={this.Increment} className='btn btn-outline-success m-2'>
+                                    Increment
+                                </button>
+                                <button onClick={this.Restart} className='btn btn-outline-success m-2'>
+                                    Restart
+                                </button>
+                                <button onClick={this.Decrement} className='btn btn-outline-success m-2'>
+                                    Decrement
+                                </button>
+                            </div>
+                            
+                            <div className='m-2'>
+                                {this.state.prevCounter !== null && (
+                                    <p>Le compteur est passé de {this.state.prevCounter} à {this.state.counter};</p>
+                                )}
+                            </div>
+                        </div>
+                    }
+                }
                 
-                <div className='m-2'>
-                    {this.state.prevCounter !== null && (
-                        <p>Le compteur est passé de {this.state.prevCounter} à {this.state.counter};</p>
-                    )}
-                </div>
             </div>
         );
     }
