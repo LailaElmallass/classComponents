@@ -9,10 +9,19 @@ class Counter extends React.Component {
     }
 
     Increment = () => {
+
+        if (this.state.counter === 10) {
+            throw new Error('Counter reached 10');
+        }
         this.setState({ counter: this.state.counter + 1 });
+
     }
 
     Decrement = () => {
+        
+        if (this.state.counter < 0) {
+            throw new Error('Counter cannot be negative');
+        }
         this.setState({ counter: this.state.counter - 1 });
     }
 
@@ -34,11 +43,6 @@ class Counter extends React.Component {
         return (
             <div className='Container border border-dark text-center'>
                 <h1 className='text-center'>Counter</h1>
-                {
-                    if(this.state.counter == 5) {
-                        <ErrorBoundary/>
-                    }
-                    else{
                         <div>
                             <p><strong>{this.state.counter}</strong></p>
                             <div>
@@ -59,8 +63,7 @@ class Counter extends React.Component {
                                 )}
                             </div>
                         </div>
-                    }
-                }
+                  
                 
             </div>
         );

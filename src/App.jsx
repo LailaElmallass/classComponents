@@ -3,6 +3,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Counter from './Counter';
 import UserList from './UserList';
 import Timer from './Timer';
+import ErrorBoundary from './ErrorBoundary';
+import OptimizedCounter from './OptimizedCounter';
+import Todo_App from './Todo_App';
 
 
 function App() {
@@ -16,10 +19,15 @@ function App() {
 
   return (
     <div>
-      <Counter/>
-      <button onClick={() => ToggleButton()} className='btn btn-primary m-4'>{timerVisible? 'Masquer' : 'Afficher'}</button>
+      <ErrorBoundary>
+          <Counter/>
+      </ErrorBoundary>
+      
+      <button onClick={() => ToggleButton()} className='btn btn-primary m-4'>{timerVisible? 'Masquer le compteur' : 'Afficher le compteur'}</button>
       { timerVisible? <Timer/>: ""}
       {/* <UserList/> */}
+      {/* <OptimizedCounter/> */}
+      <Todo_App/>
     </div>
   )
 }
